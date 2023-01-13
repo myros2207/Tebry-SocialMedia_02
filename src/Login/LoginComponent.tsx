@@ -20,9 +20,11 @@ const LoginComponent = () => {
             login: login,
             password: password
         })
-        console.log(response.data.isLogged)
+        console.log(response.data)
         if (response.data.isLogged === true){
-            navigate("/")
+            localStorage.setItem("Token", response.data.token)
+            localStorage.setItem("Login", login)
+            navigate("/youAccount")
         }
     }
     return (
@@ -36,4 +38,4 @@ const LoginComponent = () => {
     );
 };
 
-export default LoginComponent;
+export default LoginComponent; 
