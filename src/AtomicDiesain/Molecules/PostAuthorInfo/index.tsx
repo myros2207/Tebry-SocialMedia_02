@@ -7,6 +7,7 @@ const PostAuthorInfo = (post:IPost) => {
     return (
         <PostAuthorInfoWrapper>
             <TextAuthorName>{post.postAuthor?.userLogin}</TextAuthorName>
+            <TextAuthorName>{post.postId}</TextAuthorName>
         </PostAuthorInfoWrapper>
     );
 };

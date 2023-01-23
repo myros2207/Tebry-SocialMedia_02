@@ -1,9 +1,10 @@
 import React, {ChangeEvent, useState} from 'react';
 import AddPhotoBox from "../../Molecules/AddPhotoBox";
 import {TextAreaPost} from "../../Atoms/textArea/styles";
-import {InputAddImage, InputLogin} from "../../Atoms/inputs/styles";
+import {InputAddImage, InputLogin, InputTitle} from "../../Atoms/inputs/styles";
 import axios from "axios";
 import {AddPhotoWrapper} from "../../Molecules/AddPhotoBox/styles";
+import {axiosGlobal} from "../../../App";
 
 const CreatePost = () => {
     const [image, setImage] = useState([""])
@@ -29,8 +30,8 @@ const CreatePost = () => {
     console.log(image)
 
     const Post = async () => {
-        const response =  await axios.post("http://localhost:8145/post", {
-            "postTitle": "test post",
+        const response =  await axiosGlobal.post("/post", {
+            "postTitle": title.toString(),
             "postContent": "test post wiuth images i think",
             "login": localStorage.getItem("Login"),
             "token": localStorage.getItem("Token"),
@@ -39,15 +40,19 @@ const CreatePost = () => {
 
         console.log(response.data)
     }
+    const TitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value)
+    }
     return (
         <div>
             {/*<AddPhotoBox/>*/}
             <AddPhotoWrapper>
                 <InputAddImage type={"file"}  onChange={changeInput}/>
             </AddPhotoWrapper>
+            <InputTitle value={title} onChange={TitleChange} />
             <TextAreaPost/>
-            <InputLogin/>
             <button onClick={Post}>create</button>
+            <img src={image[0]} alt=""/>
         </div>
     );
 };

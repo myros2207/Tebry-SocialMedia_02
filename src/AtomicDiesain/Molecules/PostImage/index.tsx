@@ -5,7 +5,7 @@ import {IPost} from "../../../Intefacee/Post";
 import styled from "styled-components";
 
 const PostImageMolecules = (post: IPost) => {
-    const testIMage = require("../../../image/pexels-garvin-st-villier-3311574.jpg")
+    // console.log(post.images[10])
     // @ts-ignore
     const TestLikeDouble = (e) => {
         console.log(e.detail)
@@ -26,7 +26,7 @@ const PostImageMolecules = (post: IPost) => {
     return (
         <PostImageWrapper onClick={TestLikeDouble}>
 
-            <ImagePost src={post.images}/>
+            <ImagePost src={post.images?.image}/>
         </PostImageWrapper>
     );
 };

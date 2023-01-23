@@ -19,6 +19,7 @@ const StartPage = () => {
     useEffect(() => {
         if (CheckLog() === true) {
         navigate("/homepage")
+            console.log()
         }
         else{
             navigate("/login")

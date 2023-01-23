@@ -8,6 +8,7 @@ import AccountInfoBox from "../../Organisms/AccountBox";
 import AccountBox from "../../Organisms/AccountBox";
 import Navbar from "../../Organisms/Navbar";
 import NavigateMenuPhone from "../../Organisms/NavigateMenuPhone";
+import {axiosGlobal} from "../../../App";
 
 const Account = () => {
     const accoun:IAccountInfo[] = []
@@ -20,17 +21,18 @@ const Account = () => {
     }, []);
 
     const GetAllInfoAccount = async () => {
-        const response = await axios.get("http://localhost:8145/getAccountInfo/userLogin=" + localStorage.getItem("Login") + "&login=" + localStorage.getItem("Login") + "&token=" + localStorage.getItem("Token"))
+        const response = await axiosGlobal.get("/getAccountInfo/userLogin=" + localStorage.getItem("Login") + "&login=" + localStorage.getItem("Login") + "&token=" + localStorage.getItem("Token"))
         console.log(response.data)
         setAccountInfo(response.data)
         setAccountProfileImage(require("../../../Photo/IMG_9874.png"))
     }
     const GetAllYouPost = async () => {
-        const response = await axios.get("http://localhost:8145/post/userLogin=" + localStorage.getItem("Login") + "&login=" + localStorage.getItem("Login") + "&token=" + localStorage.getItem("Token"))
+        const response = await axiosGlobal.get("/post/userLogin=" + localStorage.getItem("Login") + "&login=" + localStorage.getItem("Login") + "&token=" + localStorage.getItem("Token"))
         setALlYouPost(response.data)
         console.log(response.data)
-        console.log(response.data.map((tests:any) => tests.postAuthor.userLogin))
+        // console.log(response.data.map(test => test.images))
     }
+    console.log(allYouPost)
     // @ts-ignore
     return (
         <>
@@ -43,7 +45,8 @@ const Account = () => {
             <AccountBoxPost>
             {
                 allYouPost.map(post =>
-            <UserPost postId={post.postId} postTitle={post.postTitle} postContent={post.postContent} postAuthor={post.postAuthor} images={require("../../../Photo/IMG_9874.png")} />
+            //         @ts-ignore
+            <UserPost postId={post.postId} postTitle={post.postTitle} postContent={post.postContent} postAuthor={post.postAuthor} images={post.images[0]} />
                 )
             }
             </AccountBoxPost>

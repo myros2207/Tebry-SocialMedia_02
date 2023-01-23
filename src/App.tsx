@@ -7,6 +7,12 @@ import Login from "./AtomicDiesain/Templates/Login";
 import Register from "./AtomicDiesain/Templates/Register";
 import Account from "./AtomicDiesain/Templates/Account";
 import CreatePost from "./AtomicDiesain/Organisms/CreatePost";
+import axios from "axios";
+
+export
+    const axiosGlobal = axios.create({
+    baseURL: "http://164.90.218.196:8145"
+})
 function App() {
   return (
     <div className="App" style={{

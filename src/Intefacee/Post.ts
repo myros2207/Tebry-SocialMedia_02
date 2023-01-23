@@ -10,7 +10,10 @@ export interface IPost {
     },
     whoLikesCount?: string[],
     comments?: string[],
-    images?: any
+    images?: {
+        imageId: number,
+        image: string
+    }
 }
 
 // export interface IUserPost {

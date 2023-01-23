@@ -14,7 +14,7 @@ const UserPost = (post: IPost) => {
             {/*<PostReaction id={post.id} />*/}
             {/*@ts-ignore*/}
             {/*<PostAuthorInfo postAuthor={post.postTitle}/>*/}
-            <PostAuthorInfo postAuthor={post.postAuthor}/>
+            <PostAuthorInfo postAuthor={post.postAuthor} postId={post.postId}/>
             <PostImageMolecules images={post.images}/>
             <PostReaction postId={post.postId}/>
             <PostDescription postContent={post.postContent} postTitle={post.postTitle} />

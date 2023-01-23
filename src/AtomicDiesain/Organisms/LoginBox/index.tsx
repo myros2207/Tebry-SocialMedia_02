@@ -4,6 +4,7 @@ import {InputLogin} from "../../Atoms/inputs/styles";
 import axios from "axios";
 import {LoginButton} from "../../Atoms/button/styles";
 import {useNavigate} from "react-router-dom";
+import {axiosGlobal} from "../../../App";
 
 const LoginBox = () => {
     const [login, setLogin] = useState("")
@@ -16,7 +17,7 @@ const LoginBox = () => {
         setPassword(e.target.value)
     }
     const Login = async () => {
-        const response = await axios.post("http://localhost:8145/loginUser", {
+        const response = await axiosGlobal.post("/loginUser", {
             login: login,
             password: password
         })

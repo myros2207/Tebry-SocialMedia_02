@@ -1,13 +1,15 @@
 import React from 'react';
 import {InputAddImage} from "../../Atoms/inputs/styles";
 import {CreateButton} from "../../Atoms/button/styles";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {NavbarWrapper} from "./styles";
 
 const Navbar = () => {
+    const navigate = useNavigate()
     const LogOut = () => {
         localStorage.clear()
-        window.location.reload()
+        // window.location.reload()
+        navigate("/login")  
     }
     return (
         <NavbarWrapper>
